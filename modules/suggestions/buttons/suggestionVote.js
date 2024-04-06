@@ -26,7 +26,7 @@ module.exports = {
         fs.writeFileSync(path.join(interaction.client.foldersPath, 'suggestions/data.json'), JSON.stringify(data, null, 4));
 
         const embed = require('../_suggestionEmbed.js');
-        const em = await embed(suggestion.title, suggestion.description, suggestion.upvotes.length, suggestion.downvotes.length, suggestion.time);
+        const em = await embed(suggestion.title, suggestion.description, suggestion.upvotes.length, suggestion.downvotes.length, suggestion.time, suggestion.status);
 
         const suggestionChannel = data[guildId].suggestionChannel;
         const message = await interaction.client.channels.cache.get(suggestionChannel).messages.fetch(id);

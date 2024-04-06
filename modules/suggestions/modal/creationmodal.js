@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
 const embed = require('../_suggestionEmbed.js');
 
 module.exports = {
@@ -38,7 +38,7 @@ module.exports = {
 
         if (inttime < Date.now()) return interaction.reply({ content: 'The date and time you entered is in the past. Please enter a future date and time.', ephemeral: true });
 
-        const em = await embed(interaction.fields.getTextInputValue("titleInput"), interaction.fields.getTextInputValue("descriptionInput"), "0", "0", inttime);
+        const em = await embed(interaction.fields.getTextInputValue("titleInput"), interaction.fields.getTextInputValue("descriptionInput"), "0", "0", inttime, "pending");
 
         interaction.client.channels.cache.get(suggestionChannel).send({ embeds: [em], components: [actionRow]}).then(message => {
 
@@ -47,7 +47,8 @@ module.exports = {
                 description: interaction.fields.getTextInputValue("descriptionInput"),
                 upvotes: [],
                 downvotes: [],
-                time: inttime
+                time: inttime,
+                status: "pending"
             };
 
             fs.writeFileSync(path.join(interaction.client.foldersPath, 'suggestions/data.json'), JSON.stringify(data, null, 4));

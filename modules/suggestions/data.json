@@ -2,39 +2,25 @@
     "1062638903925940265": {
         "suggestionChannel": "1068057390286647318",
         "suggestions": {
-            "1226265933564088423": {
-                "title": "asdæjlfk",
-                "description": "fsdjæ",
+            "1226287909901172819": {
+                "title": "asdasd",
+                "description": "asfsaf",
                 "upvotes": [],
                 "downvotes": [
                     "402036205165740032"
                 ],
-                "time": 1917852480000
+                "time": 1712440260000,
+                "status": "done"
             },
-            "1226266399001804851": {
-                "title": "sadlæfkjæ",
-                "description": "fælsdkjsæ",
+            "1226289604106387456": {
+                "title": "afkæsdljækl",
+                "description": "lksfjdæa",
                 "upvotes": [
                     "402036205165740032"
                 ],
                 "downvotes": [],
-                "time": 1733995800000
-            },
-            "1226270293371130020": {
-                "title": "jfadskl",
-                "description": "jæflsdk",
-                "upvotes": [],
-                "downvotes": [],
-                "time": 1712436300000
-            },
-            "1226270468911403179": {
-                "title": "fjaskldæ",
-                "description": "jkfsdælk",
-                "upvotes": [],
-                "downvotes": [
-                    "402036205165740032"
-                ],
-                "time": 1712436120000
+                "time": 1712440740000,
+                "status": "done"
             }
         }
     }
