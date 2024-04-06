@@ -23,10 +23,17 @@ module.exports = {
             .setPlaceholder('Enter the description of your suggestion')
             .setStyle(TextInputStyle.Paragraph);
 
+        const datetimeInput = new TextInputBuilder()
+            .setCustomId('datetimeInput')
+            .setLabel('Datetime')
+            .setPlaceholder('Enter the date and time for your suggestion. Example: 12-31-2022 23:59')
+            .setStyle(TextInputStyle.Short);
+
         const firstActionRow = new ActionRowBuilder().addComponents(titleInput);
         const secondActionRow = new ActionRowBuilder().addComponents(descriptionInput);
+        const thirdActionRow = new ActionRowBuilder().addComponents(datetimeInput);
 
-		modal.addComponents(firstActionRow, secondActionRow);
+		modal.addComponents(firstActionRow, secondActionRow, thirdActionRow);
 
 		await interaction.showModal(modal);
     }

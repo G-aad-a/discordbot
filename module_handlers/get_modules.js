@@ -17,6 +17,9 @@ module.exports = async (client) => {
             case 'button':
                 client.buttons.set(command.name, command);
                 break;
+            case 'startup':
+                command.execute(client);
+                break;
             default:
                 console.log(`Unknown module type: ${command.type}`);
         }
