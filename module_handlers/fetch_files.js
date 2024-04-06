@@ -9,6 +9,7 @@ module.exports = async (client) => {
     function fetchDirectory(dir) {
         fs.readdirSync(dir).forEach(file => {
             // console.log(dir, file);
+            if (file.split('\\').slice(-1)[0].startsWith('_')) return;
             if (fs.statSync(path.join(dir, file)).isDirectory()) return fetchDirectory(path.join(dir, file));
             else if (file.endsWith(".js")) return files.push(path.join(dir, file));
         });

@@ -1,4 +1,5 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+const embed = require('../_suggestionEmbed.js');
 
 module.exports = {
     name: 'suggestionModal',
@@ -13,36 +14,34 @@ module.exports = {
             return;
         }
 
-        id = Date.now();
         suggestionChannel = data[interaction.guild.id].suggestionChannel;
 
-        data[interaction.guild.id].suggestions[id] = {
-            title: interaction.fields.getTextInputValue("titleInput"),
-            description: interaction.fields.getTextInputValue("descriptionInput"),
-            upvotes: [],
-            downvotes: []
-        };
-
-        fs.writeFileSync(path.join(interaction.client.foldersPath, 'suggestions/data.json'), JSON.stringify(data, null, 4));
-
-        const embed = new EmbedBuilder()
-            .setTitle(interaction.fields.getTextInputValue("titleInput"))
-            .setDescription(interaction.fields.getTextInputValue("descriptionInput"))
-
         const thumbsUpButton = new ButtonBuilder()
-            .setCustomId('suggestionVote ' + id + ' up')
+            .setCustomId('suggestionVote ' + 'up')
             .setLabel('👍')
             .setStyle(ButtonStyle.Primary);
 
         const thumbsDownButton = new ButtonBuilder()
-            .setCustomId('suggestionVote ' + id + ' down')
+            .setCustomId('suggestionVote ' + 'down')
             .setLabel('👎')
             .setStyle(ButtonStyle.Danger);
 
         const actionRow = new ActionRowBuilder()
             .addComponents(thumbsUpButton, thumbsDownButton);
 
-        interaction.client.channels.cache.get(suggestionChannel).send({ embeds: [embed], components: [actionRow]});
+        const em = await embed(interaction.fields.getTextInputValue("titleInput"), interaction.fields.getTextInputValue("descriptionInput"), "0", "0");
+
+        interaction.client.channels.cache.get(suggestionChannel).send({ embeds: [em], components: [actionRow]}).then(message => {
+
+            data[interaction.guild.id].suggestions[message.id] = {
+                title: interaction.fields.getTextInputValue("titleInput"),
+                description: interaction.fields.getTextInputValue("descriptionInput"),
+                upvotes: [],
+                downvotes: []
+            };
+
+            fs.writeFileSync(path.join(interaction.client.foldersPath, 'suggestions/data.json'), JSON.stringify(data, null, 4));
+        });
 
         await interaction.reply({ content: 'This is a suggestion modal!', ephemeral: true });
     }

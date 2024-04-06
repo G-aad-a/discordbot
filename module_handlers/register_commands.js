@@ -8,7 +8,6 @@ module.exports = async (client) => {
     const files = await fetch_files(client);
 
     files.forEach(file => {
-        if (file.split('\\').slice(-1)[0].startsWith('_')) return;
         const command = require(file);
         if (command.type === 'command') {
             commands.push(command.data.toJSON());
