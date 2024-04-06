@@ -1,24 +1,19 @@
-module.exports = async () => {
+module.exports = async (client) => {
     const { REST, Routes } = require('discord.js');
-    const { clientId, guildId, token } = require('./config.json');
-    const fs = require('node:fs');
-    const path = require('node:path');
+    const { clientId, guildId, token } = require('../config.json');
+
+    const fetch_files = require('./fetch_files.js');
 
     const commands = [];
-    const foldersPath = path.join(__dirname, 'modules');
-    const moduleFolders = fs.readdirSync(foldersPath);
+    const files = await fetch_files(client);
 
-    for (const modfolder of moduleFolders) {
-        modpath = path.join(foldersPath, modfolder);
-        const moduleFiles = fs.readdirSync(modpath).filter(file => file.endsWith('.js'));
-        for (const file of moduleFiles) {
-            if (file.startsWith('_')) continue;
-            const command = require(path.join(modpath, file));
-            if (command.type === 'command') {
-                commands.push(command.data.toJSON());
-            }
+    files.forEach(file => {
+        if (file.split('\\').slice(-1)[0].startsWith('_')) return;
+        const command = require(file);
+        if (command.type === 'command') {
+            commands.push(command.data.toJSON());
         }
-    }
+    });
 
     // Construct and prepare an instance of the REST module
     const rest = new REST().setToken(token);
