@@ -5,14 +5,11 @@ module.exports = async (interaction) => {
 
     if (interaction.isChatInputCommand()) {
         command(interaction);
-    }
-    else if (interaction.isModalSubmit()) {
+    } else if (interaction.isModalSubmit()) {
         modal(interaction);
-    }
-    else if (interaction.isButton()) {
+    } else if (interaction.isButton()) {
         button(interaction);
-    }
-    else {
+    } else {
         console.error(`Unknown interaction type: ${interaction.type}`);
     }
-}
+};

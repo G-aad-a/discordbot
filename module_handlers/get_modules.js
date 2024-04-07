@@ -5,7 +5,7 @@ module.exports = async (client) => {
 
     const files = await fetch_files(client);
 
-    files.forEach(file => {
+    files.forEach((file) => {
         const command = require(file);
         switch (command.type) {
             case 'command':
@@ -24,4 +24,4 @@ module.exports = async (client) => {
                 console.log(`Unknown module type: ${command.type}`);
         }
     });
-}
+};

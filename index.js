@@ -17,12 +17,12 @@ const registerCommands = require('./module_handlers/register_commands.js');
 getModules(client);
 registerCommands(client);
 
-client.once(Events.ClientReady, readyClient => {
-	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+client.once(Events.ClientReady, (readyClient) => {
+    console.log(`Ready! Logged in as ${readyClient.user.tag}`);
 });
 
-client.on(Events.InteractionCreate, async interaction => {
-	eventHandler(interaction);
+client.on(Events.InteractionCreate, async (interaction) => {
+    eventHandler(interaction);
 });
 
 client.login(token);

@@ -1,4 +1,10 @@
-const { SlashCommandBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+const {
+    SlashCommandBuilder,
+    ActionRowBuilder,
+    ModalBuilder,
+    TextInputBuilder,
+    TextInputStyle,
+} = require('discord.js');
 
 module.exports = {
     name: 'suggestion',
@@ -8,7 +14,7 @@ module.exports = {
         .setDescription('Create a new suggestion 2'),
     async execute(interaction) {
         const modal = new ModalBuilder()
-			.setTitle('Create new suggestion')
+            .setTitle('Create new suggestion')
             .setCustomId('suggestionModal');
 
         const titleInput = new TextInputBuilder()
@@ -30,11 +36,15 @@ module.exports = {
             .setStyle(TextInputStyle.Short);
 
         const firstActionRow = new ActionRowBuilder().addComponents(titleInput);
-        const secondActionRow = new ActionRowBuilder().addComponents(descriptionInput);
-        const thirdActionRow = new ActionRowBuilder().addComponents(datetimeInput);
+        const secondActionRow = new ActionRowBuilder().addComponents(
+            descriptionInput
+        );
+        const thirdActionRow = new ActionRowBuilder().addComponents(
+            datetimeInput
+        );
 
-		modal.addComponents(firstActionRow, secondActionRow, thirdActionRow);
+        modal.addComponents(firstActionRow, secondActionRow, thirdActionRow);
 
-		await interaction.showModal(modal);
-    }
+        await interaction.showModal(modal);
+    },
 };
