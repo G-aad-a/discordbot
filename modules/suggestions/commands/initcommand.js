@@ -25,8 +25,8 @@ module.exports = {
 
         const datetimeInput = new TextInputBuilder()
             .setCustomId('datetimeInput')
-            .setLabel('Datetime')
-            .setPlaceholder('Enter the date and time for your suggestion. Example: 12-31-2022 23:59')
+            .setLabel('Enter the date and time for your suggestion.')
+            .setPlaceholder('Example: 12-31-2022 23:59')
             .setStyle(TextInputStyle.Short);
 
         const firstActionRow = new ActionRowBuilder().addComponents(titleInput);

@@ -23,6 +23,6 @@ module.exports = {
                     await message.edit({ embeds: [em] });
                 }
             }
-        }, 1000*6);
+        }, 1000*60);
     }
 }
