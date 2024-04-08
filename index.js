@@ -5,6 +5,7 @@ const path = require('path');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.commands = new Collection();
+client.subcommands = new Collection();
 client.modals = new Collection();
 client.buttons = new Collection();
 
