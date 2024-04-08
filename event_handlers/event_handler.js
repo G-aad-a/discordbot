@@ -5,7 +5,7 @@ module.exports = async (interaction) => {
     const button = require('./button.js');
 
     if (interaction.isChatInputCommand()) {
-        if (interaction.type == 2) {
+        if (interaction.type == 1) {
             subcommand(interaction);
         } else {
             command(interaction);

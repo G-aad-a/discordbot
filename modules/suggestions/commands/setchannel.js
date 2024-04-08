@@ -19,6 +19,23 @@ module.exports = {
 
         const channel = interaction.options.getChannel('channel');
 
+        if (
+            !fs.existsSync(
+                path.join(
+                    interaction.client.foldersPath,
+                    'suggestions/data.json'
+                )
+            )
+        ) {
+            fs.writeFileSync(
+                path.join(
+                    interaction.client.foldersPath,
+                    'suggestions/data.json'
+                ),
+                JSON.stringify({}, null, 4)
+            );
+        }
+
         data = JSON.parse(
             fs.readFileSync(
                 path.join(

@@ -4,6 +4,8 @@ module.exports = async (interaction) => {
     const parentcommand = interaction.client.subcommands.get(
         interaction.commandName
     );
+
+    console.log(interaction);
     const command = parentcommand.get(interaction.options.getSubcommand());
 
     if (!command) {

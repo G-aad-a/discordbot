@@ -7,6 +7,22 @@ module.exports = {
     async execute(interaction) {
         const fs = require('fs');
         const path = require('path');
+
+        if (
+            !fs.existsSync(
+                path.join(
+                    interaction.client.foldersPath,
+                    'suggestions/data.json'
+                )
+            )
+        ) {
+            return interaction.reply({
+                content:
+                    'Please set the suggestion channel first using /setchannel!',
+                ephemeral: true,
+            });
+        }
+
         const data = JSON.parse(
             fs.readFileSync(
                 path.join(
