@@ -10,20 +10,22 @@ module.exports = async (interaction) => {
         return;
     }
 
-    let requiredPermissions = command.permissions.map(
-        (permission) => PermissionsBitField.Flags[permission]
-    );
+    if (command.permissions) {
+        let requiredPermissions = command.permissions.map(
+            (permission) => PermissionsBitField.Flags[permission]
+        );
 
-    let hasRequiredPermissions = requiredPermissions.every((permission) =>
-        interaction.member.permissions.has(permission)
-    );
+        let hasRequiredPermissions = requiredPermissions.every((permission) =>
+            interaction.member.permissions.has(permission)
+        );
 
-    if (!hasRequiredPermissions) {
-        return interaction.reply({
-            content:
-                'You do not have the required permissions to use this command.',
-            ephemeral: true,
-        });
+        if (!hasRequiredPermissions) {
+            return interaction.reply({
+                content:
+                    'You do not have the required permissions to use this command.',
+                ephemeral: true,
+            });
+        }
     }
 
     try {
