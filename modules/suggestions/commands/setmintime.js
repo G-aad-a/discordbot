@@ -3,7 +3,7 @@ const { SlashCommandBuilder, PermissionsBitField } = require('discord.js');
 module.exports = {
     name: 'setmintime',
     type: 'command',
-    permissions: 'admin',
+    permissions: ['Administrator'],
     data: new SlashCommandBuilder()
         .setName('setmintime')
         .setDescription('Set the minimum duration for suggestions')

@@ -3,7 +3,7 @@ const { SlashCommandBuilder, PermissionsBitField } = require('discord.js');
 module.exports = {
     name: 'setchannel',
     type: 'command',
-    permissions: 'admin',
+    permissions: ['Administrator'],
     data: new SlashCommandBuilder()
         .setName('setchannel')
         .setDescription('Set the channel where suggestions will be sent')
