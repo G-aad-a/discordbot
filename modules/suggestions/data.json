@@ -1,0 +1,46 @@
+{
+    "1062638903925940265": {
+        "suggestionChannel": "1068057390286647318",
+        "minTime": 20,
+        "suggestions": {
+            "1226548883019137124": {
+                "title": "1kjfsdl",
+                "description": "lsdfkjlæ",
+                "upvotes": [
+                    "402036205165740032"
+                ],
+                "downvotes": [],
+                "time": 1712520000000,
+                "status": "done",
+                "creator": "402036205165740032"
+            },
+            "1226587694566473741": {
+                "title": "afjæl",
+                "description": "fsdælk",
+                "upvotes": [
+                    "402036205165740032"
+                ],
+                "downvotes": [],
+                "time": 1712514600000,
+                "status": "done",
+                "creator": "402036205165740032"
+            },
+            "1226787549251502091": {
+                "title": "DFAFAS",
+                "description": "fsgsdg",
+                "upvotes": [
+                    "402036205165740032"
+                ],
+                "downvotes": [],
+                "time": 1712608200000,
+                "status": "pending",
+                "creator": "402036205165740032"
+            }
+        }
+    },
+    "1033998203198124052": {
+        "suggestionChannel": "1068236835991584839",
+        "minTime": 1440,
+        "suggestions": {}
+    }
+}
