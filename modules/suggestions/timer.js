@@ -37,7 +37,8 @@ module.exports = {
                         suggestion.upvotes.length,
                         suggestion.downvotes.length,
                         suggestion.time,
-                        suggestion.status
+                        suggestion.status,
+                        suggestion.creator
                     );
                     await message.edit({ embeds: [em] });
                 }

@@ -6,7 +6,8 @@ module.exports = async (
     upvotes,
     downvotes,
     time,
-    status
+    status,
+    creator
 ) => {
     const timeLeft = time - Date.now();
     const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
@@ -27,7 +28,8 @@ module.exports = async (
             { name: 'Status', value: String(status), inline: false },
             { name: 'Upvotes', value: String(upvotes), inline: true },
             { name: 'Downvotes', value: String(downvotes), inline: true },
-            { name: 'Time left', value: time_value, inline: false }
+            { name: 'Time left', value: time_value, inline: false },
+            { name: 'Created by', value: '<@' + creator + '>', inline: false }
         );
 
     return embed;

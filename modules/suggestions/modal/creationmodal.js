@@ -74,7 +74,8 @@ module.exports = {
             '0',
             '0',
             inttime,
-            'pending'
+            'pending',
+            interaction.user.id
         );
 
         interaction.client.channels.cache
