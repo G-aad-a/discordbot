@@ -3,10 +3,9 @@ const { Collection } = require('discord.js');
 module.exports = async (client) => {
     const fs = require('fs');
 
-    const fetch_files = require('./fetch_files.js');
+    const fetcher = new (require('./fetch_files.js'))();
 
-    const files = await fetch_files(client);
-
+    const files = await fetcher.fetch_module(client);
     files.forEach((file) => {
         const command = require(file);
         switch (command.type) {

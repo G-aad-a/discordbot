@@ -7,10 +7,10 @@ module.exports = async (client) => {
     } = require('discord.js');
     const { clientId, guildId, token } = require('../config.json');
 
-    const fetch_files = require('./fetch_files.js');
+    const fetcher = new (require('./fetch_files.js'))();
 
     const commands = [];
-    const files = await fetch_files(client);
+    const files = await fetcher.fetch_module(client);
 
     files.forEach((file) => {
         const command = require(file);

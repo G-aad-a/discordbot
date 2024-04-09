@@ -1,22 +1,27 @@
-module.exports = async (client) => {
-    const fs = require('node:fs');
-    const path = require('node:path');
+const fs = require('fs');
+const path = require('path');
 
-    const moduleFolders = path.join(client.foldersPath);
+function fetchDirectory(dir, files = []) {
+    fs.readdirSync(dir).forEach((file) => {
+        const filePath = path.join(dir, file);
+        if (file.startsWith('_')) return;
+        if (fs.statSync(filePath).isDirectory()) {
+            fetchDirectory(filePath, files);
+        } else if (file.endsWith('.js')) {
+            files.push(filePath);
+        }
+    });
+    return files;
+}
 
-    let files = [];
-
-    function fetchDirectory(dir) {
-        fs.readdirSync(dir).forEach((file) => {
-            // console.log(dir, file);
-            if (file.split('\\').slice(-1)[0].startsWith('_')) return;
-            if (fs.statSync(path.join(dir, file)).isDirectory())
-                return fetchDirectory(path.join(dir, file));
-            else if (file.endsWith('.js'))
-                return files.push(path.join(dir, file));
-        });
+module.exports = class Fetcher {
+    fetch_module(client) {
+        const moduleFolders = path.join(client.foldersPath);
+        return fetchDirectory(moduleFolders);
     }
 
-    fetchDirectory(moduleFolders);
-    return files;
+    fetch_events(client) {
+        const eventFolders = path.join(client.eventFoldersPath);
+        return fetchDirectory(eventFolders);
+    }
 };
