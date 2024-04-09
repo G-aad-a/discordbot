@@ -42,6 +42,6 @@ module.exports = {
 
         const aiResponse = response.data.choices[0].message.content;
 
-        await interaction.reply({ content: aiResponse, ephemeral: true });
+        await interaction.reply({ content: aiResponse, ephemeral: false });
     },
 };
