@@ -1,13 +1,14 @@
-const { Message } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
-    name: 'messageCreate',
-    type: 'event',
-    async execute(message) {
-        if (message instanceof Message && message.content.includes('erm')) {
-            await message.reply(
-                'https://tenor.com/view/erm-what-the-sigma-squidward-meme-tiktok-reaction-gif-574741893352575449'
-            );
-        }
+    name: 'erm',
+    type: 'command',
+    data: new SlashCommandBuilder()
+        .setName('erm')
+        .setDescription('Replies with childpo when called'),
+    async execute(interaction) {
+        await interaction.reply(
+            'https://tenor.com/view/erm-what-the-sigma-squidward-meme-tiktok-reaction-gif-574741893352575449'
+        );
     },
 };
