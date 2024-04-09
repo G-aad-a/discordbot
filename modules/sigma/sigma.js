@@ -1,14 +1,14 @@
 const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
-    name: 'childpo',
+    name: 'erm',
     type: 'command',
     data: new SlashCommandBuilder()
-        .setName('childpo')
-        .setDescription('Replies with childpo when called'),
+        .setName('erm')
+        .setDescription('Erm what the sigma?'),
     async execute(interaction) {
         await interaction.reply(
-            'https://tenor.com/view/child-po-kung-fu-panda-panda-kung-fu-gif-27359038'
+            'https://tenor.com/view/erm-what-the-sigma-squidward-meme-tiktok-reaction-gif-574741893352575449'
         );
     },
 };
